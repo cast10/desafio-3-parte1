@@ -13,8 +13,6 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    public UsuarioController(UsuarioService usuarioService) {
-    }
 
     @GetMapping(path = "/usuario")
     public List<UsuarioModel> buscarUsuario(){

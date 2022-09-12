@@ -33,6 +33,19 @@ public class UsuarioService {
 
         return usuarioRepository.save(usuarioModel);
     }
+    public UsuarioModel alterarUsuario(UsuarioModel usuarioModel) {
+
+
+        usuarioModel.getUsuarioNome();
+        usuarioModel.getEmail();
+        usuarioModel.getCPF();
+        usuarioModel.getDataNascimento();
+
+
+        return usuarioRepository.save(usuarioModel);
+    }
+
+
 
     public void deleteUsuarioId(Long id) {
         usuarioRepository.deleteById(id);

@@ -24,6 +24,8 @@ public class EnderecoController {
         return enderecoService.buscarPorId(id);
     }
 
+
+
     @PostMapping(path = "/endereco")
     public EnderecoModel cadastrarEndereco(@RequestBody EnderecoModel enderecoModel){
         return enderecoService.registrarConta(enderecoModel);

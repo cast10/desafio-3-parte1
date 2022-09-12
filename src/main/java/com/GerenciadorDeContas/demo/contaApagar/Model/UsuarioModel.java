@@ -2,8 +2,10 @@ package com.GerenciadorDeContas.demo.contaApagar.Model;
 
 
 import lombok.*;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -18,7 +20,6 @@ public class UsuarioModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column(length = 30, nullable = false)
     private String usuarioNome;
 
@@ -26,9 +27,11 @@ public class UsuarioModel {
     private LocalDate dataNascimento;
 
     @Column(length = 30, nullable = false)
+    @Email
     private String email;
 
     @Column(length = 11, nullable = false)
+    @CPF
     private String CPF;
 
 }

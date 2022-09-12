@@ -1,5 +1,6 @@
 package com.GerenciadorDeContas.demo.contaApagar.Controller;
 
+import com.GerenciadorDeContas.demo.contaApagar.Model.ContaReceberModel;
 import com.GerenciadorDeContas.demo.contaApagar.Model.UsuarioModel;
 import com.GerenciadorDeContas.demo.contaApagar.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class UsuarioController {
     @PostMapping(path = "/usuario")
     public UsuarioModel cadastrarUsuario(@RequestBody UsuarioModel usuarioModel){
         return usuarioService.registrarUsuario(usuarioModel);
+    }
+    @PutMapping(path = "/usuario/{id}")
+    public UsuarioModel alteraUsuario (@RequestBody UsuarioModel usuarioModel, @PathVariable Long id) {
+        return usuarioService.alterarUsuario(usuarioModel);
     }
 
     @DeleteMapping(path = "/usuario/{id}")

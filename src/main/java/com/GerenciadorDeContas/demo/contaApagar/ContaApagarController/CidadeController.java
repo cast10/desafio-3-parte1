@@ -1,10 +1,7 @@
 package com.GerenciadorDeContas.demo.contaApagar.ContaApagarController;
 
 import com.GerenciadorDeContas.demo.contaApagar.ContaApagarModel.CidadeModel;
-import com.GerenciadorDeContas.demo.contaApagar.ContaApagarModel.EstadoModel;
-import com.GerenciadorDeContas.demo.contaApagar.ContaApagarRepository.CidadeRepository;
 import com.GerenciadorDeContas.demo.contaApagar.ContaApagarService.CidadeService;
-import com.GerenciadorDeContas.demo.contaApagar.ContaApagarService.EstadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

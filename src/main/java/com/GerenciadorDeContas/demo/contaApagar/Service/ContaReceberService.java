@@ -47,7 +47,4 @@ public class ContaReceberService {
         contaReceberRepository.deleteById(id);
     }
 
-
-
-
 }

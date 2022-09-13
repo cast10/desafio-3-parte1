@@ -24,8 +24,6 @@ public class EnderecoController {
         return enderecoService.buscarPorId(id);
     }
 
-
-
     @PostMapping(path = "/endereco")
     public EnderecoModel cadastrarEndereco(@RequestBody EnderecoModel enderecoModel){
         return enderecoService.registrarConta(enderecoModel);
@@ -36,7 +34,7 @@ public class EnderecoController {
         return enderecoService.alterarEndereco(enderecoModel);
 
     }
-    @DeleteMapping(path = "/gerenciador/{id}")
+    @DeleteMapping(path = "/endereco/{id}")
     public  void deletarEndereco(@PathVariable long id){
         enderecoService.deleteId(id);
     }

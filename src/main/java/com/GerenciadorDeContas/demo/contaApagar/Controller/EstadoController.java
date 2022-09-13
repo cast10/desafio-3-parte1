@@ -35,7 +35,7 @@ public class EstadoController {
     }
     @DeleteMapping(path = "/estado/{id}")
     public  void deletarEndereco(@PathVariable long id){
-        estadoService.deleteId(id);
+        estadoService.deleteEstadoId(id);
     }
 
 

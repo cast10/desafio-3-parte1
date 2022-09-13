@@ -1,12 +1,14 @@
 package com.GerenciadorDeContas.demo.contaApagar.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,5 +35,9 @@ public class UsuarioModel {
     @Column(length = 11, nullable = false)
     @CPF
     private String CPF;
+
+    @JsonIgnore
+    @OneToMany (mappedBy = "usuarioModel", cascade = CascadeType.ALL)
+    private List<ContaReceberModel> usuario;
 
 }

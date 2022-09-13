@@ -40,6 +40,10 @@ public class ContaReceberModel {
     @Enumerated(value = EnumType .STRING)
     private TipoRecebido tipoRecebido;
 
+    @ManyToOne
+    @JoinColumn(name = "usuario/id")
+    private UsuarioModel usuarioModel;
+
 }
 
 

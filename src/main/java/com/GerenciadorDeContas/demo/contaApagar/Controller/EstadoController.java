@@ -38,6 +38,4 @@ public class EstadoController {
         estadoService.deleteEstadoId(id);
     }
 
-
-
 }

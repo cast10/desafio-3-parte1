@@ -27,7 +27,7 @@ public class UsuarioService {
         usuarioModel.getId();
         usuarioModel.getUsuarioNome();
         usuarioModel.getEmail();
-        usuarioModel.getCPF();
+        usuarioModel.getCpf();
         usuarioModel.getDataNascimento();
 
 
@@ -38,7 +38,7 @@ public class UsuarioService {
 
         usuarioModel.getUsuarioNome();
         usuarioModel.getEmail();
-        usuarioModel.getCPF();
+        usuarioModel.getCpf();
         usuarioModel.getDataNascimento();
 
 

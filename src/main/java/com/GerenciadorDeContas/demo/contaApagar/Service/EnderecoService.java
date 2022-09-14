@@ -28,7 +28,7 @@ public class EnderecoService {
         enderecoModel.getId();
         enderecoModel.getLogradouro();
         enderecoModel.getBairro();
-        enderecoModel.getCEP();
+        enderecoModel.getCep();
         enderecoModel.getPontoReferencia();
 
         return enderecoRepository.save(enderecoModel);
@@ -37,7 +37,7 @@ public class EnderecoService {
 
         enderecoModel.getLogradouro();
         enderecoModel.getBairro();
-        enderecoModel.getCEP();
+        enderecoModel.getCep();
         enderecoModel.getPontoReferencia();
 
         return enderecoRepository.save(enderecoModel);
@@ -46,8 +46,5 @@ public class EnderecoService {
     public void deleteId(Long id) {
         enderecoRepository.deleteById(id);
     }
-
-
-
 
 }

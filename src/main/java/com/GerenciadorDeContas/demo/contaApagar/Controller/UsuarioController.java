@@ -1,6 +1,6 @@
 package com.GerenciadorDeContas.demo.contaApagar.Controller;
 
-import com.GerenciadorDeContas.demo.contaApagar.Model.ContaReceberModel;
+//import com.GerenciadorDeContas.demo.contaApagar.Model.ContaReceberModel;//
 import com.GerenciadorDeContas.demo.contaApagar.Model.UsuarioModel;
 import com.GerenciadorDeContas.demo.contaApagar.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;

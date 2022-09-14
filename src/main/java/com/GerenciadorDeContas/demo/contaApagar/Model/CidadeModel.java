@@ -1,8 +1,11 @@
 package com.GerenciadorDeContas.demo.contaApagar.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,4 +22,13 @@ public class CidadeModel {
 
     @Column(length = 30, nullable = false)
     private String cidadeNome;
+
+    @ManyToOne
+    @JoinColumn(name = "estado_id", referencedColumnName = "codigo")
+    private EstadoModel estado_id;
+
+    //relação na model Cidade, para dizer que uma Cidade tem varios endereços
+    @JsonIgnore
+    @OneToMany(mappedBy = "cidade_id",cascade = CascadeType.ALL)
+    private List<EnderecoModel> listaDeEndereco = new ArrayList<EnderecoModel>();
 }

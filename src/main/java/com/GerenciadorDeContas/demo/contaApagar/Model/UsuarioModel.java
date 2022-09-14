@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -35,8 +36,20 @@ public class UsuarioModel {
     @CPF
     private String cpf;
 
-  //  @JsonIgnore
-    //@OneToMany (mappedBy = "usuarioModel", cascade = CascadeType.ALL)
-    //private List<ContaReceberModel> usuario;
+   // @JsonIgnore
+    //@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+   // private List<ContaReceberModel> contaReceber = new ArrayList<>();
 
-}
+   // @JsonIgnore
+   // @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+   // private List<EnderecoModel> enderecos = new ArrayList<>();
+
+   // public UsuarioModel(String nomeUsuario, LocalDate dataNascimento, String email, String cpf) {
+     //   this.usuarioNome = nomeUsuario;
+       // this.dataNascimento = dataNascimento;
+       // this.email = email;
+       // this.cpf = cpf;
+
+
+    }
+

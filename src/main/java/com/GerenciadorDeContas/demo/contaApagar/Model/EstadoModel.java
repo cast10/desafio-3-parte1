@@ -11,7 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Data
 @Entity
 @Table(name = "estado")
 public class EstadoModel {
@@ -26,9 +25,12 @@ public class EstadoModel {
     @Column(length = 30, nullable = false)
     private String uf;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "estado", cascade = CascadeType.ALL)
+    private List<CidadeModel> cidade = new ArrayList<>();
 
-
-  // @JsonIgnore
-  // @OneToMany(mappedBy = "estado_id",cascade = CascadeType.ALL)
-    //private List<CidadeModel> listacidades = new ArrayList<CidadeModel>();
+    public EstadoModel(String uf, String nomeEstado) {
+        this.uf = uf;
+        this.estadoNome = nomeEstado;
+    }
 }

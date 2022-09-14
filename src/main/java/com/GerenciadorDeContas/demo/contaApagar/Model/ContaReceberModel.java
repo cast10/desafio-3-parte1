@@ -1,6 +1,7 @@
 package com.GerenciadorDeContas.demo.contaApagar.Model;
 
 
+import com.GerenciadorDeContas.demo.contaApagar.Model.enuns.RecebimentoAlugueis;
 import com.GerenciadorDeContas.demo.contaApagar.Model.enuns.Status;
 import com.GerenciadorDeContas.demo.contaApagar.Model.enuns.TipoRecebido;
 import lombok.*;
@@ -32,8 +33,7 @@ public class ContaReceberModel {
     @Column(length = 15, nullable = false)
     private BigDecimal valorRecebido;
 
-    //@Column(length = 15, nullable = false)
-    //private BigDecimal descontoJuros;
+    private RecebimentoAlugueis recebimentoAlugueis;
 
     @Column(length = 15, nullable = false)
     private LocalDate dataDeVencimento;
@@ -44,9 +44,11 @@ public class ContaReceberModel {
     @Enumerated(value = EnumType .STRING)
     private TipoRecebido tipoRecebido;
 
-  //  @ManyToOne
-   // @JoinColumn(name = "usuario/id")
-   // private UsuarioModel usuarioModel;
+   // @ManyToOne
+   // @JoinColumn(name = "usuario_id", referencedColumnName = "codigo")
+   // private UsuarioModel usuario;
+
+
 
 }
 

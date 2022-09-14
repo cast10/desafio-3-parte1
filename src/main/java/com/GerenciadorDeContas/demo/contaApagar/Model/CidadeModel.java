@@ -11,7 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Data
 @Entity
 @Table(name = "cidade")
 public class CidadeModel {
@@ -23,12 +22,16 @@ public class CidadeModel {
     @Column(length = 30, nullable = false)
     private String cidadeNome;
 
-   //@ManyToOne
-   //@JoinColumn(name = "estado_id", referencedColumnName = "codigo")
-    //private EstadoModel estado_id;
+    @ManyToOne
+    @JoinColumn(name = "estado_id", referencedColumnName = "cidadeId")
+    private EstadoModel estado;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "cidade", cascade = CascadeType.ALL)
+    private List<EnderecoModel> enderecos = new ArrayList<>();
 
-   //@JsonIgnore
-   //@OneToMany(mappedBy = "cidade_id",cascade = CascadeType.ALL)
-   //private List<EnderecoModel> listaDeEndereco = new ArrayList<EnderecoModel>();
+    public CidadeModel(String cidadeNome, EstadoModel estado) {
+        this.cidadeNome = cidadeNome;
+        this.estado = estado;
+    }
 }

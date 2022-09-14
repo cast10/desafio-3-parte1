@@ -28,11 +28,11 @@ public class EnderecoModel {
     @Column(length = 30, nullable = false)
     private String pontoReferencia;
 
-    @ManyToOne
-    @JoinColumn(name = "cidade_id", referencedColumnName = "codigo")
-    private CidadeModel cidade_id;
+  //  @ManyToOne
+  //  @JoinColumn(name = "cidade_id", referencedColumnName = "codigo")
+  //  private CidadeModel cidade_id;
 
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", referencedColumnName = "codigo")
-    private UsuarioModel usuario_id;
+   // @ManyToOne
+  //  @JoinColumn(name = "usuario_id", referencedColumnName = "codigo")
+  //  private UsuarioModel usuario_id;
 }

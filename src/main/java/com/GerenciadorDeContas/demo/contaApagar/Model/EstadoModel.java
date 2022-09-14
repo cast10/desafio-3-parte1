@@ -28,7 +28,7 @@ public class EstadoModel {
 
 
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "estado_id",cascade = CascadeType.ALL)
-    private List<CidadeModel> listacidades = new ArrayList<CidadeModel>();
+  // @JsonIgnore
+  // @OneToMany(mappedBy = "estado_id",cascade = CascadeType.ALL)
+    //private List<CidadeModel> listacidades = new ArrayList<CidadeModel>();
 }

@@ -10,6 +10,7 @@ import com.GerenciadorDeContas.demo.contaApagar.Repository.ContaReceberRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -39,15 +40,15 @@ public class ContaReceberService {
         } else {
             contaReceberModel.setStatus(Status.AGUARDANDO);
         }
-        if (contaReceberModel.getTipoRecebido().equals(TipoRecebido.ALUGUEIS)) {
-            if (contaReceberModel.getDataDeVencimento().isBefore(dataAtual)) {
-                contaReceberModel.setRecebimentoAlugueis(RecebimentoAlugueis.EM_DIA);
-            } else if (contaReceberModel.getDataDeVencimento().isAfter(dataAtual)) {
-                contaReceberModel.setRecebimentoAlugueis(RecebimentoAlugueis.ADIANTADO);
-            } else {
-                contaReceberModel.setRecebimentoAlugueis(RecebimentoAlugueis.EM_DIA);
-            } 
-            
+        if (contaReceberModel.getTipoRecebido().equals(TipoRecebido.ALUGUEIS))
+        {
+            contaReceberModel.setRecebimentoAlugueis(RecebimentoAlugueis.EM_DIA);
+        } else if (contaReceberModel.getDataDeVencimento().isAfter(dataAtual)) {
+            contaReceberModel.setRecebimentoAlugueis(RecebimentoAlugueis.ADIANTADO);
+        } else {
+            contaReceberModel.setRecebimentoAlugueis(RecebimentoAlugueis.EM_DIA);
+        }
+
         contaReceberModel.getContaReceberId();
         contaReceberModel.getStatus();
         contaReceberModel.getRecebimento();

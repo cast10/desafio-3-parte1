@@ -1,9 +1,11 @@
 package com.GerenciadorDeContas.demo.contaApagar.Service;
 
 import com.GerenciadorDeContas.demo.contaApagar.Model.ContaReceberModel;
-//import com.GerenciadorDeContas.demo.contaApagar.Model.Factory.CalcaloValorReceber;
-//import com.GerenciadorDeContas.demo.contaApagar.Model.Factory.PagamentoFactory;
+import com.GerenciadorDeContas.demo.contaApagar.Model.Factory.CalcaloValorReceber;
+import com.GerenciadorDeContas.demo.contaApagar.Model.Factory.PagamentoFactory;
+import com.GerenciadorDeContas.demo.contaApagar.Model.enuns.RecebimentoAlugueis;
 import com.GerenciadorDeContas.demo.contaApagar.Model.enuns.Status;
+import com.GerenciadorDeContas.demo.contaApagar.Model.enuns.TipoRecebido;
 import com.GerenciadorDeContas.demo.contaApagar.Repository.ContaReceberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +20,8 @@ public class ContaReceberService {
     @Autowired
     private ContaReceberRepository contaReceberRepository;
 
-   // @Autowired
-  //  private PagamentoFactory pagamentoFactory;
+   @Autowired 
+   private PagamentoFactory pagamentoFactory;
 
     public List<ContaReceberModel> buscaCOntaReceberTodos(){
         return contaReceberRepository.findAll();
@@ -37,6 +39,15 @@ public class ContaReceberService {
         } else {
             contaReceberModel.setStatus(Status.AGUARDANDO);
         }
+        if (contaReceberModel.getTipoRecebido().equals(TipoRecebido.ALUGUEIS)) {
+            if (contaReceberModel.getDataDeVencimento().isBefore(dataAtual)) {
+                contaReceberModel.setRecebimentoAlugueis(RecebimentoAlugueis.EM_DIA);
+            } else if (contaReceberModel.getDataDeVencimento().isAfter(dataAtual)) {
+                contaReceberModel.setRecebimentoAlugueis(RecebimentoAlugueis.ADIANTADO);
+            } else {
+                contaReceberModel.setRecebimentoAlugueis(RecebimentoAlugueis.EM_DIA);
+            } 
+            
         contaReceberModel.getContaReceberId();
         contaReceberModel.getStatus();
         contaReceberModel.getRecebimento();
@@ -44,7 +55,7 @@ public class ContaReceberService {
         contaReceberModel.getValorRecebido();
         contaReceberModel.getTipoRecebido();
         contaReceberModel.getDataDeVencimento();
-       // contaReceberModel.getDescontoJuros();
+
 
         return contaReceberRepository.save(contaReceberModel);
     }

@@ -36,19 +36,13 @@ public class UsuarioModel {
     @CPF
     private String cpf;
 
-   // @JsonIgnore
-    //@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-   // private List<ContaReceberModel> contaReceber = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario_id", cascade = CascadeType.ALL)
+    private List<ContaReceberModel> contaReceber = new ArrayList<>();
 
-   // @JsonIgnore
-   // @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-   // private List<EnderecoModel> enderecos = new ArrayList<>();
-
-   // public UsuarioModel(String nomeUsuario, LocalDate dataNascimento, String email, String cpf) {
-     //   this.usuarioNome = nomeUsuario;
-       // this.dataNascimento = dataNascimento;
-       // this.email = email;
-       // this.cpf = cpf;
+   @JsonIgnore
+   @OneToMany(mappedBy = "usuario_id", cascade = CascadeType.ALL)
+   private List<EnderecoModel> enderecos = new ArrayList<>();
 
 
     }

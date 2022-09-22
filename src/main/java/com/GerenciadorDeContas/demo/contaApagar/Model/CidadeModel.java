@@ -22,16 +22,11 @@ public class CidadeModel {
     @Column(length = 30, nullable = false)
     private String cidadeNome;
 
-    @ManyToOne
-    @JoinColumn(name = "estado_id", referencedColumnName = "cidadeId")
-    private EstadoModel estado;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cidade", cascade = CascadeType.ALL)
-    private List<EnderecoModel> enderecos = new ArrayList<>();
+    @OneToMany(mappedBy = "cidade_id", cascade = CascadeType.ALL)
+    private List<CidadeModel> enderecos = new ArrayList<>();
 
-    public CidadeModel(String cidadeNome, EstadoModel estado) {
-        this.cidadeNome = cidadeNome;
-        this.estado = estado;
-    }
+
+
 }

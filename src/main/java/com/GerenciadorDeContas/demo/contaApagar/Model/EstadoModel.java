@@ -2,7 +2,6 @@ package com.GerenciadorDeContas.demo.contaApagar.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ public class EstadoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long estadoId;
+    private Long id;
 
     @Column(length = 20, nullable = false)
     private String estadoNome;
@@ -29,8 +28,5 @@ public class EstadoModel {
     @OneToMany(mappedBy = "estado", cascade = CascadeType.ALL)
     private List<CidadeModel> cidade = new ArrayList<>();
 
-    public EstadoModel(String uf, String nomeEstado) {
-        this.uf = uf;
-        this.estadoNome = nomeEstado;
-    }
+
 }

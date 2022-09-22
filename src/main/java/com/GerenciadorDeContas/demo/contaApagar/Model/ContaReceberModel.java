@@ -44,9 +44,9 @@ public class ContaReceberModel {
     @Enumerated(value = EnumType .STRING)
     private TipoRecebido tipoRecebido;
 
-   // @ManyToOne
-   // @JoinColumn(name = "usuario_id", referencedColumnName = "codigo")
-   // private UsuarioModel usuario;
+   @ManyToOne
+   @JoinColumn(name = "usuario_id", referencedColumnName = "codigo")
+   private UsuarioModel usuario;
 
 
 

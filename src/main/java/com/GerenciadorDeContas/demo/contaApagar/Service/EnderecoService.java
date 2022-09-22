@@ -22,7 +22,7 @@ public class EnderecoService {
         return enderecoRepository.findById(id);
 
     }
-    public EnderecoModel registrarConta(EnderecoModel enderecoModel) {
+    public EnderecoModel registrarEndereco(EnderecoModel enderecoModel) {
 
 
         enderecoModel.getId();

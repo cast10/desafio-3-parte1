@@ -17,7 +17,7 @@ public class CidadeService {
         return cidadeRepository.findAll();
     }
 
-    public Optional<CidadeModel> buscarCidadeId(Long id){
+    public Optional<CidadeModel> buscarCidadeId(){
         return cidadeRepository.findById(id);
 
     }

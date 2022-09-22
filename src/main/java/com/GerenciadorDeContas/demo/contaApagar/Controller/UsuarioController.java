@@ -4,6 +4,8 @@ package com.GerenciadorDeContas.demo.contaApagar.Controller;
 import com.GerenciadorDeContas.demo.contaApagar.Model.UsuarioModel;
 import com.GerenciadorDeContas.demo.contaApagar.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,26 +18,31 @@ public class UsuarioController {
 
 
     @GetMapping(path = "/usuario")
-    public List<UsuarioModel> buscarUsuario(){
-        return usuarioService.todosUsuario();
+    public ResponseEntity<List<UsuarioModel>> buscarUsuario(){
+        return ResponseEntity.ok(usuarioService.todosUsuario());
     }
 
     @GetMapping(path = "/usuario/{id}")
-    public Optional<UsuarioModel> buscarUsuarioId(@PathVariable long id){
-        return usuarioService.buscarPorId(id);
+    public ResponseEntity<Optional<UsuarioModel>> buscarUsuarioId(@PathVariable long id){
+        return ResponseEntity.ok(usuarioService.buscarPorId(id));
     }
+
     @PostMapping(path = "/usuario")
-    public UsuarioModel cadastrarUsuario(@RequestBody UsuarioModel usuarioModel){
-        return usuarioService.registrarUsuario(usuarioModel);
+    public ResponseEntity <UsuarioModel> cadastrarUsuario(@RequestBody UsuarioModel cadastreUsuario){
+        UsuarioModel novoUsuario = usuarioService.registrarUsuario(cadastreUsuario);
+        return new ResponseEntity<>(novoUsuario, HttpStatus.CREATED);
     }
+
     @PutMapping(path = "/usuario/{id}")
-    public UsuarioModel alteraUsuario (@RequestBody UsuarioModel usuarioModel, @PathVariable Long id) {
-        return usuarioService.alterarUsuario(usuarioModel);
+    ResponseEntity<UsuarioModel>alteraUsuario (@RequestBody UsuarioModel altereUsuario, @PathVariable Long id) {
+        altereUsuario.setId(id);
+        return ResponseEntity.ok(usuarioService.alterarUsuario(altereUsuario));
     }
 
     @DeleteMapping(path = "/usuario/{id}")
-    public  void deletarConta(@PathVariable long id){
+    public ResponseEntity<Void>deletarConta(@PathVariable long id){
         usuarioService.deleteUsuarioId(id);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
 

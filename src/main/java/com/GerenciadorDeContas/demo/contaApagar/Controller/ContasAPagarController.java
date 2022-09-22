@@ -3,6 +3,8 @@ package com.GerenciadorDeContas.demo.contaApagar.Controller;
 import com.GerenciadorDeContas.demo.contaApagar.Model.ContaAPagarModel;
 import com.GerenciadorDeContas.demo.contaApagar.Service.ContaAPagarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,38 +17,42 @@ public class ContasAPagarController {
     private ContaAPagarService contaAPagarService;
 
     @GetMapping (path = "/gerenciador")
-    public List <ContaAPagarModel> buscarConta(){
-        return contaAPagarService.buscaTodos();
+    public ResponseEntity<List<ContaAPagarModel>> buscarConta(){
+        return ResponseEntity.ok(contaAPagarService.buscaTodos());
     }
 
     @GetMapping(path = "/gerenciador/{id}")
-    public Optional<ContaAPagarModel> buscarContaId(@PathVariable long id){
-        return contaAPagarService.buscarId(id);
+    public ResponseEntity<Optional<ContaAPagarModel>> buscarContaId(@PathVariable long id){
+        return ResponseEntity.ok(contaAPagarService.buscarId(id));
     }
 
-   // @GetMapping(path = "/gerenciador/status/{status}")
-    //public Optional<ContaAPagarModel> buscarContaId(@PathVariable Status status){
-     //   return contaAPagarService.buscarId(status);
-    //}
-
-   // @GetMapping(path = "/gerenciador/tipo/{tipo}")
-    //public Optional<ContaAPagarModel> buscarContaId(@PathVariable Tipo tipo) {
-      //  return contaAPagarService.buscarId(tipo);
-    //}
 
     @PostMapping(path = "/gerenciador")
-    public ContaAPagarModel cadastrarConta(@RequestBody ContaAPagarModel contaAPagarModel){
-        return contaAPagarService.registrarConta(contaAPagarModel);
+    public ResponseEntity <ContaAPagarModel> cadastrarConta(@RequestBody ContaAPagarModel cadastreConta){
+        ContaAPagarModel novaConta = contaAPagarService.registrarConta(cadastreConta);
+        return new ResponseEntity<>(novaConta, HttpStatus.CREATED);
     }
 
     @PutMapping(path = "/gerenciador/{id}")
-    public ContaAPagarModel alterarStatus (@RequestBody ContaAPagarModel contaAPagarModel,@PathVariable Long id){
-        return contaAPagarService.alterarStatusConta(contaAPagarModel);
+    public ResponseEntity<ContaAPagarModel> alterarStatus (@RequestBody ContaAPagarModel altereConta,@PathVariable Long id){
+        altereConta.setId(id);
+        return ResponseEntity.ok(contaAPagarService.alterarStatusConta(altereConta));
 
     }
     @DeleteMapping(path = "/gerenciador/{id}")
-    public  void deletarConta(@PathVariable long id){
+    public ResponseEntity <Void>deletarConta(@PathVariable long id){
         contaAPagarService.deleteId(id);
+        return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
     }
 
+
+    // @GetMapping(path = "/gerenciador/status/{status}")
+    //public Optional<ContaAPagarModel> buscarContaId(@PathVariable Status status){
+    //   return contaAPagarService.buscarId(status);
+    //}
+
+    // @GetMapping(path = "/gerenciador/tipo/{tipo}")
+    //public Optional<ContaAPagarModel> buscarContaId(@PathVariable Tipo tipo) {
+    //  return contaAPagarService.buscarId(tipo);
+    //}
 }

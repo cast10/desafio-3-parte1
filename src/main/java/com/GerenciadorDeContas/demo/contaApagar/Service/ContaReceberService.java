@@ -1,7 +1,6 @@
 package com.GerenciadorDeContas.demo.contaApagar.Service;
 
 import com.GerenciadorDeContas.demo.contaApagar.Model.ContaReceberModel;
-import com.GerenciadorDeContas.demo.contaApagar.Model.Factory.CalcaloValorReceber;
 import com.GerenciadorDeContas.demo.contaApagar.Model.Factory.PagamentoFactory;
 import com.GerenciadorDeContas.demo.contaApagar.Model.enuns.RecebimentoAlugueis;
 import com.GerenciadorDeContas.demo.contaApagar.Model.enuns.Status;
@@ -10,7 +9,6 @@ import com.GerenciadorDeContas.demo.contaApagar.Repository.ContaReceberRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
